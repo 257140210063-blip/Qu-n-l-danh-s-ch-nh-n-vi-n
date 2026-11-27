@@ -13,7 +13,8 @@ private:
    double heSoLuong;
    int soNgayCong;
    double luongThucLinh;
-public
+public:
+   void nhap(){
    cout<<"nhap ma nhan vien:";
    getline(cin,maNV);
    cout<<"nhap ho ten:";
