@@ -1,0 +1,38 @@
+void sapXep(vector<NhanVien>& ds) {
+    sort(ds.begin(), ds.end(),
+        [](const NhanVien& a, const NhanVien& b) {
+            return a.getLuong() > b.getLuong();
+        });
+
+    cout << "Da sap xep theo luong giam dan!\n";
+}
+
+void timKiem(const vector<NhanVien>& ds) {
+    string ma;
+
+    cout << "Nhap ma nhan vien can tim: ";
+    getline(cin, ma);
+
+    bool timThay = false;
+
+    for (const NhanVien& nv : ds) {
+        if (nv.getMaNV() == ma) {
+            cout << "\nTim thay nhan vien:\n";
+
+            cout << left
+                 << setw(12) << "Ma NV"
+                 << setw(25) << "Ho ten"
+                 << setw(18) << "Phong ban"
+                 << setw(15) << "He so luong"
+                 << setw(15) << "Ngay cong"
+                 << setw(15) << "Luong" << endl;
+
+            nv.xuat();
+            timThay = true;
+        }
+    }
+
+    if (!timThay) {
+        cout << "Khong tim thay nhan vien!\n";
+    }
+}
