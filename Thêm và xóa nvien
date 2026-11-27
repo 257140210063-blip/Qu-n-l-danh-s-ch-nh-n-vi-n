@@ -1,0 +1,108 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <limits>
+using namespace std;
+//Lop nhan vien
+class NhanVien {
+private:
+ string maNV, hoten;
+ int tuoi;
+ double luong;
+pulic:
+ void nhap () {
+   count << "Nhap ma nhan vien: ";
+   getline(cin, maNV);
+   cout << "Nhap ho ten: ";
+   getline (cin, hoten);
+   cout << "Nhap luong: ";
+   cin >> luong;
+   cin.ignore (numeric_limits<streamsize>: :max(), '\n);
+}
+void xuat () {
+ count << maNV <<" | "
+       << hoten << " | "
+       << tuoi << " | "
+       << luong << endl;
+} };
+// Lop quan ly nhan vien
+class quanlyNV {
+private:
+ vector <NhanVien> ds;
+ int vitri;
+public:
+//Them nhan vien vao vi tri bat ki
+void themNV () {
+ if (ds.size () >=199) {
+  cout << "Danh sach da dat gioi han \n"
+  return;
+}
+cout << "Nhap vi tri muon them ( 1 - "
+     << ds.size () + 1 << "):";
+cin >> vitri;
+if (vitri < 1 || vitri > (int)ds.size () + 1) {
+ cout << "Vi tri khong dung \n"
+ return;
+}
+cin.ignore (numeric_limits <streamsize>: : max(), '\n');
+NhanVien nv;
+cout << "Nhap thong tin nhan vien moi \n";
+nv.nhap ();
+ds.insert(ds.begin() + vitri - 1, nv);
+}
+// Xoa nhan vien o vi tri bat ki
+void xoaNV() {
+ if (ds.empty ()) {
+  cout <<"Danh sach rong, khong the xoa \n"
+  return;
+}
+cout << "Nhap vi tri muon xoa (1- "
+     << ds.size () << "): ";
+cin >> vt;
+if (vt < 1 || vt > (int)ds.size ()) {
+ cout << "Vi tri khong hop le \n";
+ return;
+}
+ds.erase (ds.begin() + vitri - 1);
+cout << "Xoa thanh cong \n";
+}
+void hienthids(){
+ if (ds.empty ()) {
+  cout << "Danh sach rong \n";
+  return;
+}
+cout << "\n -----DANH SACH NHAN VIEN ----- \n";
+cout << "Ma NV | Ho ten | Tuoi | Luong \n";
+for (int i = 0; i < (int) ds.size(); i++) {
+ cout << i + 1 << ".";
+ ds[i].xuat ();
+}}};
+int main () {
+ quanlyNV ql;
+ int chon;
+do {
+ cout << "\n===== QUAN LY NHAN VIEN =====\n";
+ cout << "1. Them nhan vien\n";
+ cout << "2. Xoa nhan vien\n";
+ cout << "3. Hien thi danh sach\n";
+ cout << "0. Thoat chuong trinh\n";
+ cout << "Nhap lua chon: ";
+ cin >> chon;
+ switch (chon) {
+  case 1:
+     ql.themNhanVien();
+     break;
+  case 2:
+     ql.xoaNhanVien();
+     break;
+  case 3:
+     ql.hienThiDanhSach();
+     break;
+  case 0:
+     cout << "Ket thuc chuong trinh!\n";
+     break;
+  default:
+          cout << "Lua chon khong hop le!\n";
+}} while (chon != 0);
+    return 0;
+}
