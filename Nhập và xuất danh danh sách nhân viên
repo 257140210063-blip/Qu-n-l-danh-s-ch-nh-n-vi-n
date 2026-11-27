@@ -1,0 +1,100 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+#include <limits>
+
+using namespace std;
+
+class NhanVien {
+private:
+    string maNV;
+    string hoTen;
+    string phongBan;
+    double heSoLuong;
+    int ngayCong;
+
+public:
+    // Ham nhap thong tin nhan vien
+    void nhap() {
+         cout << "Ma nhan vien: ";
+         getline(cin, maNV);
+
+         cout << "Ho ten: ";
+         getline(cin, hoTen);
+
+         cout << "Phong ban: ";
+         getline(cin, phongBan);
+
+         cout << "He so luong: ";
+         cin >> heSoLuong;
+
+         cout << "Ngay cong: ";
+         cin >> ngayCong;
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+    // Ham xuat thong tin nhan vien
+    void xuat() const {
+        cout << left
+             << setw(12) << maNV
+             << setw(25) << hoTen
+             << setw(18) << phongBan
+             << setw(15) << heSoLuong
+             << setw(15) << ngayCong
+             << setw(15) << fixed << setprecision(0)
+             << tinhLuong() << endl;
+    }
+};
+    // Ham nhap danh sach nhan vien 
+void nhapDanhSach(vector<NhanVien>& ds) {
+ int n;
+
+    do {
+        cout << "Nhap so nhan vien (0 < n < 200): ";
+        cin >> n;
+    } while (n <= 0 || n >= 200);
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    ds.clear();
+
+    for (int i = 0; i < n; i++) {
+        cout << "\nNhap nhan vien thu " << i + 1 << ":\n";
+
+        NhanVien nv;
+        nv.nhap();
+
+        ds.push_back(nv);
+    }
+}
+     // Ham xuat danh sach nhan vien
+void xuatDanhSach(const vector<NhanVien>& ds) {
+    if (ds.empty()) {
+        cout << "Danh sach rong!\n";
+        return;
+    }
+
+    cout << "\n========== DANH SACH NHAN VIEN ==========\n";
+
+    cout << left
+         << setw(12) << "Ma NV"
+         << setw(25) << "Ho ten"
+         << setw(18) << "Phong ban"
+         << setw(15) << "He so luong"
+         << setw(15) << "Ngay cong"
+         << setw(15) << "Luong" << endl;
+
+    for (const NhanVien& nv : ds) {
+        nv.xuat();
+    }
+}
+      // Ham main
+      int main() {
+          vector<NhanVien> ds;
+
+           nhapDanhSach(ds);
+
+           xuatDanhSach(ds);
+return 0;
+}
+
