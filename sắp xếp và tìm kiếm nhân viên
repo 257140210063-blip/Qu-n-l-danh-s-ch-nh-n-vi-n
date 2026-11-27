@@ -8,8 +8,12 @@ void sapXep(vector<NhanVien>& ds) {
 }
 
 void timKiem(const vector<NhanVien>& ds) {
-    string ma;
+if (ds.empty()) {
+        cout << "Danh sach nhan vien dang rong!\n";
+        return;
+    }
 
+    string ma;
     cout << "Nhap ma nhan vien can tim: ";
     getline(cin, ma);
 
