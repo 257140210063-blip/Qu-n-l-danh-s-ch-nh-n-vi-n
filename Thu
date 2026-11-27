@@ -1,0 +1,50 @@
+#include<iosteam>
+#include<string>
+#include<iomanip>
+#include<vector>
+#include<algorithm>
+#include<limits>
+using namespace std;
+class NhanVien{
+private:
+   string maNV;
+   string hoTen;
+   string phongBan;
+   double heSoLuong;
+   int soNgayCong;
+   double luongThucLinh;
+public
+   cout<<"nhap ma nhan vien:";
+   getline(cin,maNV);
+   cout<<"nhap ho ten:";
+   getline(cin,hoTen);
+   cout<<"nhap phong ban:";
+   getline(cin,phongBan);
+   cout<<"nhap he so luong:";
+   cin>>heSoLuong;
+   cout<<"nhap so ngay cong";
+   cin>>soNgayCong;
+   cin.ignore(numeric_limits<streamsize>::max(),'\n');
+   tinhLuong();
+}
+void tinhLuong(){
+   luongThucLinh= heSoLuong* soNgayCong*200000;
+}
+void xuat() const{
+   cout<<left
+      <<setw(12)<<maNV
+      <<setw(25)<<hoTen
+      <<setw(18)<<phongBan 
+      <<setw(15)<<heSoLuong 
+      <<setw(15)<<soNgayCong 
+      <<setw(15)<<fixed<<setprecision(0)
+      <<luongThucLinh<<endl;
+}
+string getMaNV()const{
+   return maNV;
+}
+double getLuong ()const{
+   return luongThucLinh;
+}
+};
+      
